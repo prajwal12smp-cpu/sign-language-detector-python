@@ -8,8 +8,15 @@ import numpy as np
 
 data_dict = pickle.load(open('./data.pickle', 'rb'))
 
-data = np.asarray(data_dict['data'])
-labels = np.asarray(data_dict['labels'])
+raw_data = data_dict['data']
+raw_labels = data_dict['labels']
+
+filtered_samples = [(d, l) for d, l in zip(raw_data, raw_labels) if len(d) == 42]
+
+if not filtered_samples:
+    raise ValueError('No samples with 42 features were found. Check data preprocessing.')
+
+data, labels = map(np.asarray, zip(*filtered_samples))
 
 x_train, x_test, y_train, y_test = train_test_split(data, labels, test_size=0.2, shuffle=True, stratify=labels)
 

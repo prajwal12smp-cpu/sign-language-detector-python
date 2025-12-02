@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Detector - Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>SignDetect AI</h1>
+    </header>
+    <nav>
+       <a href="index.html">Home</a>
+       <a href="how_it_works.html">How It Works</a>
+       <a href="demo.html">Demo</a>
+       <a href="about.html">About</a>
+       <a href="LoginSignUp.html" id="auth-link" class="auth-btn">Logout</a>
+    </nav> 
+    
+    <div class="container demo-area">
+        <section class="card">
+            <h2>Real-Time Sign Language Detection</h2>
+            <p>Ensure your webcam is enabled and your backend server is running. Position your hand clearly in the frame to see the results.</p>
+            
+            <img id="video-feed" src="http://127.0.0.1:5000/video_feed" alt="Live Video Feed">
+            
+            <div class="prediction-box">
+                Current Sign: <span id="current-prediction">Loading...</span>
+            </div>
+            
+    </div>
+    
+    
+    <script>
+        // *** This script simulates fetching the text prediction from the backend. ***
+        
+        const predictionElement = document.getElementById('current-prediction');
+        const videoFeed = document.getElementById('video-feed');
+        const serverAddress = 'http://127.0.0.1:5000'; // ASSUMED Flask server address
+
+        // Function to update the prediction text
+        async function updatePrediction() {
+            try {
+                // Fetch the latest prediction text from the server
+                // NOTE: This assumes you have a Flask route like @app.route('/prediction')
+                const response = await fetch(serverAddress + '/prediction');
+                const data = await response.json(); 
+                
+                if (data && data.prediction) {
+                    predictionElement.textContent = data.prediction;
+                } else {
+                    predictionElement.textContent = "Waiting for hand detection...";
+                }
+
+            } catch (error) {
+                // predictionElement.textContent = "Server connection error (Is the backend running?)";
+                // Optionally log the error to console: console.error('Error fetching prediction:', error);
+            }
+        }
+
+        // Set the video stream source. We use an <img> tag pointing to the MJPEG stream.
+        // The image source is set directly in HTML: src="http://127.0.0.1:5000/video_feed"
+
+        // Update the prediction text every 100 milliseconds
+        setInterval(updatePrediction, 100);
+
+        // Initial check to confirm the video feed is working
+        videoFeed.onerror = function() {
+            predictionElement.textContent = "Waiting for server response...";
+        };
+        
+
+        // You would need to create a Python Flask server with routes for:
+        // 1. /video_feed: Streams the cv2 processed frames (using the logic in inference_classifier.py).
+        // 2. /prediction: Returns the latest predicted sign text as JSON: {"prediction": "HELLO"}.
+    </script>
+    <section class="detectable-section">
+  <h2>Detectable Signs</h2>
+  <p class="subtitle">
+    Our model can accurately recognize these 6 common sign language gestures
+  </p>
+
+  <div class="card-container">
+
+    <div class="card">
+      <div class="card-header">
+        <img src="10336100.png" class="icon" alt="Hello icon" />
+        <span class="badge">94%</span>
+      </div>
+
+      <h3>Hello</h3>
+      <p class="desc">Friendly greeting gesture with raised hand</p>
+
+      <hr />
+
+      <p class="tips-title">Detection Tips:</p>
+      <p class="tips">Keep hand fully visible with palm facing camera</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <img src="10336100.png" class="icon" alt="Yes icon" />
+        <span class="badge">92%</span>
+      </div>
+
+      <h3>Yes</h3>
+      <p class="desc">Affirmative nod-like hand gesture</p>
+
+      <hr />
+
+      <p class="tips-title">Detection Tips:</p>
+      <p class="tips">Make clear up and down motion with closed fist</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <img src="10336100.png" class="icon" alt="No icon" />
+        <span class="badge">91%</span>
+      </div>
+
+      <h3>No</h3>
+      <p class="desc">Negative shake-like hand gesture</p>
+
+      <hr />
+
+      <p class="tips-title">Detection Tips:</p>
+      <p class="tips">Use clear side-to-side motion</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <img src="10336100.png" class="icon" alt="Thanks icon" />
+        <span class="badge">93%</span>
+      </div>
+
+      <h3>Thanks</h3>
+      <p class="desc">Gratitude gesture from chin moving forward</p>
+
+      <hr />
+
+      <p class="tips-title">Detection Tips:</p>
+      <p class="tips">Start near chin and move hand outward</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <img src="10336100.png" class="icon" alt="Sorry icon" />
+        <span class="badge">95%</span>
+      </div>
+
+      <h3>Sorry</h3>
+      <p class="desc">Gesture indicating apology or regret</p>
+
+      <hr />
+
+      <p class="tips-title">Detection Tips:</p>
+      <p class="tips">Make a gentle circular motion near the chest with one hand</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <img src="10336100.png" class="icon" alt="Please icon" />
+        <span class="badge">90%</span>
+      </div>
+
+      <h3>Please</h3>
+      <p class="desc">Polite request with circular hand motion on chest</p>
+
+      <hr />
+
+      <p class="tips-title">Detection Tips:</p>
+      <p class="tips">Make circular motion over chest area</p>
+    </div>
+
+  </div>
+</section>
+
+
+    <footer>
+        <p>&copy; 2025 Sign Language Detector Project</p>
+    </footer>
+
+    <script type="module">
+        import { checkLoginStatus, handleLogout } from './Firebase auth.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const authLink = document.getElementById('auth-link');
+            const isLoggedIn = checkLoginStatus();
+
+            if (isLoggedIn) {
+                authLink.textContent = 'Logout';
+                authLink.href = '#'; 
+                authLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    handleLogout();
+                });
+            } else {
+                authLink.textContent = 'Sign In';
+                authLink.href = 'LoginSignUp.html';
+            }
+        });
+    </script>
+</body>
+</html>

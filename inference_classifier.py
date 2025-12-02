@@ -7,15 +7,15 @@ import numpy as np
 model_dict = pickle.load(open('./model.p', 'rb'))
 model = model_dict['model']
 
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(0)
 
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 
-hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
+hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1, min_detection_confidence=0.3, min_tracking_confidence=0.5)
 
-labels_dict = {0: 'A', 1: 'B', 2: 'L'}
+labels_dict = {0: 'HELLO', 1: 'YES', 2: 'NO', 3: 'THANKS', 4: 'SORRY', 5: 'PLEASE', 6: 'A', 7: 'B', 8: 'C', 9: 'D', 10: '1', 11: '2', 12: '3', 13: '4'}
 while True:
 
     data_aux = []
@@ -23,6 +23,9 @@ while True:
     y_ = []
 
     ret, frame = cap.read()
+    if not ret or frame is None:
+        print('Unable to read from camera. Check the device index or connection.')
+        break
 
     H, W, _ = frame.shape
 
@@ -65,10 +68,12 @@ while True:
         cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 0), 4)
         cv2.putText(frame, predicted_character, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 0, 0), 3,
                     cv2.LINE_AA)
-
     cv2.imshow('frame', frame)
-    cv2.waitKey(1)
-
+    
+    # Exit on 'q' key press or window close
+    key = cv2.waitKey(25) & 0xFF
+    if key == ord('q') or cv2.getWindowProperty('frame', cv2.WND_PROP_VISIBLE) < 1:
+        break
 
 cap.release()
 cv2.destroyAllWindows()

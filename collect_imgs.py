@@ -1,4 +1,5 @@
 import os
+import sys
 
 import cv2
 
@@ -7,10 +8,16 @@ DATA_DIR = './data'
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
 
-number_of_classes = 3
+number_of_classes = 14
 dataset_size = 100
 
-cap = cv2.VideoCapture(2)
+# Default to the first available webcam (index 0). Change via CAMERA_INDEX env variable.
+camera_index = int(os.getenv('CAMERA_INDEX', 0))
+cap = cv2.VideoCapture(camera_index)
+if not cap.isOpened():
+    print(f'Warning: Unable to open camera index {camera_index}. '
+          'Connect a webcam or set CAMERA_INDEX to a valid source.')
+    sys.exit(0)
 for j in range(number_of_classes):
     if not os.path.exists(os.path.join(DATA_DIR, str(j))):
         os.makedirs(os.path.join(DATA_DIR, str(j)))

@@ -1,0 +1,545 @@
+/* style.css */
+
+:root {
+    --primary-color: #6f43d4;
+    --secondary-color: #6C757D;
+    --background-color: #f8f9fa;
+    --text-color: #343a40;
+    --card-bg: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+nav {
+    display: flex;
+    justify-content: right;
+    background: #343a40;
+    padding: 0.5rem 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--secondary-color);
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow);
+    margin-bottom: 2rem;
+}
+
+/* Home Page Styles */
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero-section h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* How It Works & About Styles */
+.feature-list, .tech-stack {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    background: #e9ecef;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-left: 5px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+/* Demo Page Styles */
+.demo-area {
+    text-align: center;
+}
+
+#video-feed {
+    width: 100%;
+    max-width: 720px;
+    background: #333;
+    border: 5px solid var(--primary-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.prediction-box {
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #343a40;
+    color: white;
+    margin-top: 30px;
+}
+
+.recognized-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f7f8fc;
+}
+
+.recognized-section h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.recognized-section .subtitle {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card img {
+  width: 60px;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.card p {
+  color: #666;
+  font-size: 14px;
+}
+
+.roadmap-section {
+  padding: 40px 20px;
+  text-align: center;
+  background: #fafbff;
+}
+
+.roadmap-section h2 {
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+
+.roadmap-subtitle {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.roadmap-cards {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+/* Card base */
+.phase-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 22px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  border: 1px solid #ecebff;
+}
+
+/* Colored left border per phase */
+.phase-1 { border-left: 4px solid #7857ff; }
+.phase-2 { border-left: 4px solid #ff8a5b; }
+.phase-3 { border-left: 4px solid #b0a5ff; }
+.phase-4 { border-left: 4px solid #b0a5ff; }
+
+.phase-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.phase-top h3 {
+  font-size: 18px;
+}
+
+.icon {
+  font-size: 18px;
+}
+
+/* Status bar */
+.status-bar {
+  height: 28px;
+  border-radius: 999px;
+  background: #f1efff;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.status-1 {
+  background: linear-gradient(90deg, #7857ff, #9b6bff);
+}
+
+.status-2 {
+  background: linear-gradient(90deg, #ff8a5b, #ffae6b);
+}
+
+.status-3,
+.status-4 {
+  background: #e7e4ff;
+  color: #555;
+}
+
+/* List */
+.phase-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.phase-card li {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 18px;
+}
+
+.phase-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 13px;
+  color: #7857ff;
+}
+
+.tech-section {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f6f7fb;
+}
+
+.tech-section h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.tech-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tech-card {
+  background: white;
+  padding: 25px 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: 0.2s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.tech-card h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.tech-card p {
+  color: #666;
+  font-size: 14px;
+}
+
+.overview-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f6f7fb;
+}
+
+.overview-section h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.overview-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px 35px;
+  text-align: left;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+.overview-card h3 {
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.overview-card p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.overview-card ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.overview-card li {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.detectable-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f6f7fb;
+}
+
+.detectable-section h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.detectable-section .subtitle {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 35px;
+}
+
+/* Grid layout */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card */
+.card {
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Header inside card */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  width: 45px;
+}
+
+/* Badge */
+.badge {
+  background: #8559ff;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Title & text */
+.card h3 {
+  margin: 14px 0 6px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.desc {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* Divider */
+.card hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 12px 0;
+}
+
+/* Detection tip text */
+.tips-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.tips {
+  color: #666;
+  font-size: 14px;
+}
+
+
+/* Responsive Navigation for smaller screens */
+@media (max-width: 600px) {
+    nav {
+        justify-content: center; /* Center links */
+        flex-wrap: wrap; /* Allow wrapping if needed */
+    }
+
+    nav a {
+        margin: 0.25rem 0.5rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* style.css */
+
+:root {
+/* ... existing styles ... */
+}
+
+/* ... existing styles ... */
+
+nav {
+    display: flex;
+    justify-content: right;
+    background: #343a40;
+    padding: 0.5rem 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--secondary-color);
+}
+
+/* NEW: Style for the auth button in the navbar */
+.auth-btn {
+    /* Using a distinct, primary-like color for emphasis */
+    background-color: #8559ff; 
+    color: white !important;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    margin-left: 1rem; /* Separate it from the main links */
+    font-weight: 600;
+}
+
+.auth-btn:hover {
+    background-color: #6a35f7;
+    text-decoration: none;
+}
+
+/* ... existing styles ... */
+
