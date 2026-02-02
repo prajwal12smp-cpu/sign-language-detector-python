@@ -5,46 +5,19 @@ Overview:
 SignDetect AI is a real-time hand gesture and sign language detection system built using Python, computer vision, and machine learning. The application captures live video from a webcam, detects hand landmarks using MediaPipe, and classifies predefined static hand gestures using a trained Random Forest model. The project demonstrates a full end-to-end machine learning pipeline, from data collection and feature extraction to model training and real-time deployment via a Flask web application.
 
 Features:
-Real-time hand gesture recognition using a webcam
-MediaPipe Hands for accurate hand landmark detection (21 key points)
-Random Forest classifier for gesture classification
-Scale and position invariant feature normalization
-Live video streaming with prediction overlay
-REST API endpoint to fetch current predictions
-Modular and easy-to-understand project structure
+Real-time hand gesture recognition using a webcam, MediaPipe Hands for accurate hand landmark detection (21 key points), Random Forest classifier for gesture classification, Scale and position invariant feature normalisation, Live video streaming with prediction overlay, REST API endpoint to fetch current predictions, Modular and easy-to-understand project structure
 
 Supported Gestures:
-The model is trained on 14 static hand signs, including:
-Common signs like HELLO, YES, NO
-Basic alphabets and numbers (A, B, 1, 2, etc.)
+The model is trained on 14 static hand signs, including Common signs like HELLO, YES, NO, and Basic alphabet and numbers (A, B, 1, 2, etc.).
 
-Tech Stack:
-Python
-OpenCV
-MediaPipe
-Scikit-learn
-Flask
-NumPy
-
-Project Structure:
-sign-language-detector-python/
-│
-├── collect_imgs.py          # Capture gesture images using webcam
-├── create_dataset.py        # Extract and normalize hand landmarks
-├── train_classifier.py      # Train Random Forest model
-├── inference_classifier.py  # Real-time gesture prediction
-├── app.py                   # Flask web application
-├── model.p                  # Trained ML model
-├── data.pickle              # Extracted feature dataset
-├── requirements.txt         # Project dependencies
-└── README.md
+Tech Stack: Python, OpenCV, MediaPipe, Scikit-learn, Flask, NumPy
 
 How It Works:
 Data Collection:-
 Images are captured using a webcam for each gesture class.
 Feature Extraction:-
 MediaPipe detects 21 hand landmarks per frame.
-These landmarks are normalized to form a 42-dimensional feature vector.
+These landmarks are normalised to form a 42-dimensional feature vector.
 Model Training:-
 A Random Forest classifier is trained on the extracted features.
 Real-Time Inference:-
