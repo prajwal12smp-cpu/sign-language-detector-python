@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Detector - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>SignDetect AI</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="how_it_works.html">How It Works</a>
+        <a href="demo.html">Demo</a>
+        <a href="about.html">About</a>
+        <a href="LoginSignUp.html" id="auth-link" class="auth-btn">Logout</a>
+    </nav>
+    
+    <div class="container">
+        <section class="card hero-section">
+             
+            <h2>Breaking communication barriers with AI-powered Sign Language Recognition</h2>
+            <p>Welcome to SignDetect AI, a real-time American Sign Language (ASL) detection system powered by Computer Vision and Machine Learning.</p>
+            <p>Our project uses hand landmark detection and a trained classification model to instantly recognize and translate common signs.</p>
+            <a href="demo.html" class="btn-primary">▶️ Start Real-Time Detection Now</a>
+        </section>
+<section class="recognized-section">
+          <h2>Recognized Signs</h2>
+          <p class="subtitle">
+             Our model can accurately detect and recognize these common sign language gestures
+          </p>
+
+        <div class="card-container"> 
+            <div class="card">
+            <img src="10336100.png" alt="Hello" />
+            <h3>Hello</h3>
+            <p>Friendly greeting gesture</p>
+        </div>
+
+    <div class="card">
+      <img src="10336100.png" alt="Yes" />
+      <h3>Yes</h3>
+      <p>Affirmative response</p>
+    </div>
+
+    <div class="card">
+      <img src="10336100.png" alt="No" />
+      <h3>No</h3>
+      <p>Negative response</p>
+    </div>
+
+    <div class="card">
+      <img src="10336100.png" alt="Thanks" />
+      <h3>Thanks</h3>
+      <p>Expression of gratitude</p>
+    </div>
+
+    <div class="card">
+      <img src="10336100.png" alt="Sorry" />
+      <h3>Sorry</h3>
+      <p>Apology</p>
+    </div>
+
+    <div class="card">
+      <img src="10336100.png" alt="Please" />
+      <h3>Please</h3>
+      <p>Polite request</p>
+    </div>
+  </div>
+</section>
+
+
+        <section class="card">
+            <h3>Key Features</h3>
+            <ul class="feature-list">
+                <li>✅ Real-Time Inference: Detect signs instantaneously using your webcam.</li>
+                <li>✅ Accurate Classification: Utilizes a trained Random Forest Classifier for high accuracy.</li>
+                <li>✅ MediaPipe Integration: Leverages MediaPipe Hands for robust and precise hand landmark extraction.</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sign Language Detector Project</p>
+    </footer>
+
+    <script type="module">
+        import { checkLoginStatus, handleLogout } from './Firebase auth.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const authLink = document.getElementById('auth-link');
+            const isLoggedIn = checkLoginStatus();
+
+            if (isLoggedIn) {
+                authLink.textContent = 'Logout';
+                authLink.href = '#'; 
+                authLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    handleLogout();
+                });
+            } else {
+                authLink.textContent = 'Sign In';
+                authLink.href = 'LoginSignUp.html';
+            }
+        });
+    </script>
+</body>
+</html>

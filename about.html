@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Detector - About</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>SignDetect AI</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="how_it_works.html">How It Works</a>
+        <a href="demo.html">Demo</a>
+        <a href="about.html">About</a>
+        <a href="LoginSignUp.html" id="auth-link" class="auth-btn">Logout</a>
+    </nav>
+    <section class="overview-section">
+  <h2>Project Overview</h2>
+
+  <div class="overview-card">
+
+    <h3>What is this?</h3>
+    <p>
+      The SignDetect AI project aims to provide a fast and accessible tool for translating American Sign Language (ASL) gestures into text in real-time. By leveraging modern computer vision techniques, we strive to make communication more inclusive and intuitive.
+      It can accurately identify 6 common sign language gestures: Hello, Yes, No,
+      Thanks, Sorry, and Please.
+    </p>
+
+    <h3>Why is this important?</h3>
+    <p>
+      According to the World Health Organization, over 430 million people worldwide have hearing loss.
+      Sign language is essential for communication in the deaf community, but most hearing individuals
+      don't understand it. This technology bridges that gap, making communication more accessible and
+      inclusive for everyone.
+    </p>
+
+    <h3>Technical Highlights</h3>
+    <ul>
+      <li>Python: The primary programming language for all backend logic and ML tasks.</li>
+      <li>OpenCV (`opencv-python`): Used for camera capture, image manipulation, and displaying output (in the original desktop version).</li>
+      <li>MediaPipe (`mediapipe`): The powerful framework for high-fidelity hand and landmark detection.</li>
+      <li>Scikit-learn (`scikit-learn`): The foundational library for machine learning, used here to implement the Random Forest Classifier.</li>
+      <li>NumPy: Essential for efficient array and data manipulation during dataset creation and inference.</li>
+    </ul>
+
+  </div>
+</section>
+
+    <section class="roadmap-section">
+  <h2>Development Roadmap</h2>
+  <p class="roadmap-subtitle">
+    Our journey from prototype to production
+  </p>
+
+  <div class="roadmap-cards">
+
+    <div class="phase-card phase-1">
+      <div class="phase-top">
+        <h3>Phase 1</h3>
+        <span class="icon"></span>
+      </div>
+
+      <div class="status-bar status-1">
+        <span>Completed</span>
+      </div>
+
+      <ul>
+        <li>6 basic signs detection</li>
+        <li>Model training</li>
+        <li>Web interface</li>
+      </ul>
+    </div>
+
+    <div class="phase-card phase-2">
+      <div class="phase-top">
+        <h3>Phase 2</h3>
+        <span class="icon"></span>
+      </div>
+
+      <div class="status-bar status-2">
+        <span>In Progress</span>
+      </div>
+
+      <ul>
+        <li>Real-time camera integration</li>
+        <li>User authentication</li>
+        <li>Detection history</li>
+      </ul>
+    </div>
+
+    <div class="phase-card phase-3">
+      <div class="phase-top">
+        <h3>Phase 3</h3>
+        <span class="icon"></span>
+      </div>
+
+      <div class="status-bar status-3">
+        <span>Planned</span>
+      </div>
+
+      <ul>
+        <li>50+ signs vocabulary</li>
+        <li>Mobile app development</li>
+        <li>Sentence formation</li>
+      </ul>
+    </div>
+
+    <div class="phase-card phase-4">
+      <div class="phase-top">
+        <h3>Phase 4</h3>
+        <span class="icon"></span>
+      </div>
+
+      <div class="status-bar status-4">
+        <span>Future</span>
+      </div>
+
+      <ul>
+        <li>Two-way translation</li>
+        <li>AR integration</li>
+        <li>Community contributions</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+    <footer>
+        <p>&copy; 2025 Sign Language Detector Project</p>
+    </footer>
+
+    <script type="module">
+        import { checkLoginStatus, handleLogout } from './Firebase auth.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const authLink = document.getElementById('auth-link');
+            const isLoggedIn = checkLoginStatus();
+
+            if (isLoggedIn) {
+                authLink.textContent = 'Logout';
+                authLink.href = '#'; 
+                authLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    handleLogout();
+                });
+            } else {
+                authLink.textContent = 'Sign In';
+                authLink.href = 'LoginSignUp.html';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Detector - How It Works</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>SignDetect AI</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="how_it_works.html">How It Works</a>
+        <a href="demo.html">Demo</a>
+        <a href="about.html">About</a>
+        <a href="LoginSignUp.html" id="auth-link" class="auth-btn">Logout</a>
+    </nav>
+    <section class="tech-section">
+  <h2>Technologies Used</h2>
+
+  <div class="tech-cards">
+
+    <div class="tech-card">
+      <h3>Python</h3>
+      <p>The primary programming language for all backend logic and ML tasks.</p>
+    </div>
+    
+    <div class="tech-card">
+      <h3>OpenCV</h3>
+      <p>Used for camera capture, image manipulation, and displaying output (in the original desktop version).</p>
+    </div>
+
+    <div class="tech-card">
+      <h3>MediaPipe </h3>
+      <p>The powerful framework for high-fidelity hand and landmark detection.</p>
+    </div>
+
+    <div class="tech-card">
+      <h3>Scikit-learn </h3>
+      <p>The foundational library for machine learning, used here to implement the Random Forest Classifier.</p>
+    </div>
+
+    <div class="tech-card">
+      <h3>NumPy</h3>
+      <p>Essential for efficient array and data manipulation during dataset creation and inference.</p>
+    </div>
+
+  </div>
+</section>
+
+    
+    <div class="container">
+        <section class="card">
+            <h2>The Detection Pipeline</h2>
+            <p>This project follows a standard Machine Learning pipeline involving data collection, preprocessing, training, and real-time inference. Your Python scripts manage each phase seamlessly.</p>
+            
+            <h3>1. Data Collection</h3>
+            <p>This script is used to capture multiple image samples for each sign (class) using the webcam. Images are stored in the `./data` directory, structured by class ID (0, 1, 2, etc.).</p>
+
+            <h3>2. Dataset Creation</h3>
+            <p>
+                This is the preprocessing step. It iterates through the collected images, uses MediaPipe Hands to detect and extract the 21 hand landmarks for each successful detection. The normalized coordinates (features) and their corresponding sign label are saved into the "data.pickle"file for training.
+                
+            </p>
+
+            <h3>3. Model Training</h3>
+            <p>The features from `data.pickle` are used to train a powerful classification model. We use the Random Forest Classifier (`sklearn.ensemble`) for its accuracy and robustness. The trained model is then serialized and saved as "model.p" file</p>
+
+            <h3>4. Real-Time Inference</h3>
+            <p>This is the core detection script. It loads the `model.p`, accesses the webcam, and performs the following in real-time on every frame:</p>
+            <ol>
+                <li>Capture the video frame.</li>
+                <li>Process the frame with MediaPipe to get hand landmarks.</li>
+                <li>Normalize the landmark coordinates (same process as `create_dataset.py`).</li>
+                <li>Pass the normalized features to the loaded Random Forest model for classification.</li>
+                <li>Display the detected hand sign (e.g., 'HELLO', 'YES') on the screen.</li>
+            </ol>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sign Language Detector Project</p>
+    </footer>
+
+    <script type="module">
+        import { checkLoginStatus, handleLogout } from './Firebase auth.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const authLink = document.getElementById('auth-link');
+            const isLoggedIn = checkLoginStatus();
+
+            if (isLoggedIn) {
+                authLink.textContent = 'Logout';
+                authLink.href = '#'; 
+                authLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    handleLogout();
+                });
+            } else {
+                authLink.textContent = 'Sign In';
+                authLink.href = 'LoginSignUp.html';
+            }
+        });
+    </script>
+</body>
+</html>
