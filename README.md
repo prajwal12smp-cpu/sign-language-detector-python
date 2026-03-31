@@ -17,3 +17,9 @@ Future Improvements: Support for dynamic and continuous sign language using LSTM
 Acknowledgements: MediaPipe Hands by Google OpenCV community Scikit-learn documentation
 
 Author: Prajwal Shivashimpar
+
+
+
+https://github.com/user-attachments/assets/b8b203ba-4b07-4bcf-a577-fcadd38d1828
+
+
