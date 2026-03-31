@@ -19,6 +19,12 @@ Acknowledgements: MediaPipe Hands by Google OpenCV community Scikit-learn docume
 Author: Prajwal Shivashimpar
 
 
+Screenshots
+<img width="996" height="461" alt="image" src="https://github.com/user-attachments/assets/12b786e3-d29c-4265-8a00-1a58f60d4f19" />
+<img width="1006" height="503" alt="image" src="https://github.com/user-attachments/assets/04a8939a-c659-428e-898b-4c19737e7543" />
+<img width="995" height="433" alt="image" src="https://github.com/user-attachments/assets/e7f1b18c-dc34-4f15-a843-00e7e3f9b977" />
+<img width="995" height="463" alt="image" src="https://github.com/user-attachments/assets/0c40e80d-b57f-4cce-ab1b-97ae03950926" />
+
 
 https://github.com/user-attachments/assets/b8b203ba-4b07-4bcf-a577-fcadd38d1828
 
