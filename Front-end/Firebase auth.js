@@ -4,13 +4,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebas
 
    
   const firebaseConfig = {
-    apiKey: "AIzaSyDtrNwHLP5MwGwkd8lk6GyrxkecDFd4G0Q",
-    authDomain: "pet-care-7921f.firebaseapp.com",
-    databaseURL: "https://pet-care-7921f-default-rtdb.firebaseio.com",
-    projectId: "pet-care-7921f",
-    storageBucket: "pet-care-7921f.firebasestorage.app",
-    messagingSenderId: "1031801172442",
-    appId: "1:1031801172442:web:49e72393b702de161890e3"
+    apiKey: " ",
+    authDomain: " ",
+    databaseURL: " ",
+    projectId: " ",
+    storageBucket: " ",
+    messagingSenderId: " ",
+    appId: " "
   };
 
   
